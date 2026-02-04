@@ -50,13 +50,16 @@
     <meta name="format-detection" content="email=no">
     
     <!-- Google Analytics -->
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=%VITE_ANALYTICS_ID%"></script>
+    <!-- Configure VITE_ANALYTICS_ID environment variable to enable Google Analytics -->
+    <!-- Example:
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_ID"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', '%VITE_ANALYTICS_ID%');
+      gtag('config', 'YOUR_GA_ID');
     </script>
+    -->
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -91,11 +94,15 @@
     <!-- Transak Widget (lazy loaded) -->
     <script defer src="https://widget.transak.com/v2/index.js"></script>
     <script type="module" src="/src/main.tsx" defer></script>
+    <!-- Umami Analytics -->
+    <!-- Configure VITE_ANALYTICS_ENDPOINT and VITE_ANALYTICS_WEBSITE_ID to enable Umami -->
+    <!-- Example:
     <script
       defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"
+      src="https://your-umami-instance.com/script.js"
+      data-website-id="your-website-id"
       data-auto-track="false"></script>
+    -->
   </body>
 
 </html>
