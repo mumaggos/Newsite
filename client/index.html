@@ -38,9 +38,14 @@
     <link rel="manifest" href="/manifest.json">
     
     <!-- Preconnect to external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/fonts/cinzel-decorative.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/rajdhani.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Preload critical images with priority hints -->
+    <link rel="preload" href="/images/token-xs.webp" as="image" type="image/webp" fetchpriority="high">
     
     <!-- Safari optimization -->
     <meta name="apple-mobile-web-app-capable" content="yes">

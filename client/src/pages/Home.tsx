@@ -38,30 +38,25 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center pt-10 pb-20">
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-8 z-10"
-          >
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+          <div className="space-y-8 z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
               </span>
               {t('home.hero.presale_live').replace('{phase}', currentPhase.toString())}
-            </motion.div>
+            </div>
             
-            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-display font-bold leading-tight text-foreground">
+            <h1 className="text-5xl md:text-7xl font-display font-bold leading-tight text-foreground">
               {t('home.hero.title.where')} <span className="text-primary text-gold-glow">{t('home.hero.title.strategy')}</span> <br />
               {t('home.hero.title.meets')} <span className="text-secondary text-neon">{t('home.hero.title.luck')}</span>
-            </motion.h1>
+            </h1>
             
-            <motion.p variants={itemVariants} className="text-xl text-muted-foreground max-w-lg leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-lg leading-relaxed">
               {t('home.hero.subtitle')}
-            </motion.p>
+            </p>
             
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/presale">
                 <Button 
                   size="lg" 
@@ -80,9 +75,9 @@ export default function Home() {
                   {t('home.hero.audited')} <ShieldCheck className="ml-2 h-5 w-5" />
                 </Button>
               </a>
-            </motion.div>
+            </div>
 
-            <motion.div variants={itemVariants} className="pt-4 flex items-center gap-8 text-sm text-muted-foreground">
+            <div className="pt-4 flex items-center gap-8 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="text-secondary w-5 h-5" />
                 <span>{t('home.hero.audited')}</span>
@@ -91,9 +86,9 @@ export default function Home() {
                 <Zap className="text-primary w-5 h-5" />
                 <span>{t('home.hero.dividends')}</span>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div variants={itemVariants} className="grid grid-cols-3 gap-6 border-t border-border/30 pt-8">
+            <div className="grid grid-cols-3 gap-6 border-t border-border/30 pt-8">
               <div>
                 <p className="text-3xl font-display font-bold text-foreground mb-1">$0.20</p>
                 <p className="text-sm text-muted-foreground">{t('home.hero.price')}</p>
@@ -106,8 +101,8 @@ export default function Home() {
                 <p className="text-3xl font-display font-bold text-foreground mb-1">21M</p>
                 <p className="text-sm text-muted-foreground">{t('home.hero.supply')}</p>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           <motion.div 
             initial={{ opacity: 0, scale: 0.8 }}
@@ -177,11 +172,17 @@ export default function Home() {
               </p>
             </div>
             <div className="relative h-[400px] rounded-2xl overflow-hidden border border-primary/20 shadow-2xl glass-card">
-              <img 
-                src="/images/IMG_2912.webp" 
-                alt="Lubdan Treasure" 
-                className="w-full h-full object-cover"
-              />
+              <picture>
+                <source media="(max-width: 768px)" srcSet="/images/IMG_2912-mobile.webp" />
+                <img 
+                  src="/images/IMG_2912.webp" 
+                  alt="Lubdan Treasure" 
+                  width="600"
+                  height="400"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </picture>
             </div>
           </div>
         </div>

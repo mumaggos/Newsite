@@ -229,7 +229,7 @@
   font-style: normal;
   font-weight: 400 900;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/cinzeldecorative/v16/daaCSScvJGqLYhG8nNt8KPPswUAPnh7URs1LaCyC.woff2) format('woff2');
+  src: url('/fonts/cinzel-decorative.woff2') format('woff2');
 }
 
 @font-face {
@@ -237,7 +237,7 @@
   font-style: normal;
   font-weight: 300 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/rajdhani/v15/LDIxapCSOBg7S-QT7pasEfOqeef0kg.woff2) format('woff2');
+  src: url('/fonts/rajdhani.woff2') format('woff2');
 }
 
 @font-face {
@@ -245,7 +245,7 @@
   font-style: normal;
   font-weight: 400 900;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/cinzel/v19/8vIJ7ww63mVu7gt79PT7.woff2) format('woff2');
+  src: url('/fonts/cinzel.woff2') format('woff2');
 }
 
 @font-face {
@@ -253,7 +253,7 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2) format('woff2');
+  src: url('/fonts/inter.woff2') format('woff2');
 }
 
 /* Marquee Animation for running leprechaun */

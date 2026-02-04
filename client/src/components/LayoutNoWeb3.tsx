@@ -36,7 +36,14 @@ export default function LayoutNoWeb3({ children }: { children: React.ReactNode }
     <div className="min-h-screen flex flex-col relative overflow-hidden">
       {/* Background Elements */}
       <div className="fixed inset-0 z-[-1] pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/IMG_2903.webp')] bg-cover bg-center opacity-20 mix-blend-overlay" />
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/images/IMG_2903-mobile.webp" />
+          <img 
+            src="/images/IMG_2903.webp" 
+            alt="" 
+            className="absolute top-0 left-0 w-full h-full object-cover opacity-20 mix-blend-overlay"
+          />
+        </picture>
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[100px]" />
       </div>
@@ -53,7 +60,10 @@ export default function LayoutNoWeb3({ children }: { children: React.ReactNode }
             <a className="flex items-center gap-3 group">
               <div className="relative w-10 h-10">
                 <img 
-                  src="/images/token.webp" 
+                  src="/images/token-xs.webp" 
+                  srcSet="/images/token-xs.webp 1x, /images/token-2x.webp 2x"
+                  width="40"
+                  height="40"
                   alt="Lubdan Logo" 
                   className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(212,175,55,0.5)] transition-transform group-hover:scale-110 duration-300 scale-150" 
                 />
@@ -152,7 +162,14 @@ export default function LayoutNoWeb3({ children }: { children: React.ReactNode }
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <img src="/images/token.webp" alt="Lubdan" className="w-8 h-8" />
+                <img 
+                  src="/images/token-xs.webp" 
+                  srcSet="/images/token-xs.webp 1x, /images/token-2x.webp 2x"
+                  width="32"
+                  height="32"
+                  alt="Lubdan" 
+                  className="w-8 h-8" 
+                />
                 <span className="font-display text-xl font-bold text-primary">LUBDAN</span>
               </div>
               <p className="text-muted-foreground max-w-md mb-6 leading-relaxed">
