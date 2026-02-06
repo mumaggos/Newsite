@@ -12,27 +12,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
   const { t } = useLanguage();
-  const { currentPhase, totalSold, phase1Remaining } = usePresaleDataNoWeb3();
+  const { currentPhase, totalSold } = usePresaleDataNoWeb3();
   
-  // Calculate progress (mock logic if data is 0/loading)
-  const totalPresale = 9450000;
-  const progress = totalSold > 0 ? (totalSold / totalPresale) * 100 : 15;
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   return (
     <LayoutNoWeb3>
       {/* Hero Section */}
@@ -47,12 +28,12 @@ export default function Home() {
               {t('home.hero.presale_live').replace('{phase}', currentPhase.toString())}
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-display font-bold leading-tight text-foreground">
+            <h1 className="text-5xl md:text-7xl font-display font-bold leading-tight text-foreground" style={{ opacity: 1, transform: 'none' }}>
               {t('home.hero.title.where')} <span className="text-primary text-gold-glow">{t('home.hero.title.strategy')}</span> <br />
               {t('home.hero.title.meets')} <span className="text-secondary text-neon">{t('home.hero.title.luck')}</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground max-w-lg leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-lg leading-relaxed" style={{ opacity: 1, transform: 'none' }}>
               {t('home.hero.subtitle')}
             </p>
             
@@ -104,12 +85,7 @@ export default function Home() {
             </div>
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative flex justify-center lg:justify-end z-10 mt-8 lg:mt-0"
-          >
+          <div className="relative flex justify-center lg:justify-end z-10 mt-8 lg:mt-0">
             {/* Floating element - Current Phase */}
             <motion.div 
               animate={{ y: [0, -15, 0] }}
@@ -130,7 +106,7 @@ export default function Home() {
             </motion.div>
             
             <Mascot3D />
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -229,10 +205,7 @@ export default function Home() {
 
 function FeatureCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
   return (
-    <motion.div 
-      whileHover={{ y: -10 }}
-      className="p-8 rounded-2xl glass-card hover:border-primary/50 transition-all duration-300 group"
-    >
+    <div className="p-8 rounded-2xl glass-card hover:border-primary/50 transition-all duration-300 group">
       <div className="mb-6 p-4 rounded-xl bg-background/50 w-fit group-hover:bg-primary/10 transition-colors">
         {icon}
       </div>
@@ -240,6 +213,6 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode, titl
       <p className="text-muted-foreground leading-relaxed">
         {description}
       </p>
-    </motion.div>
+    </div>
   );
 }

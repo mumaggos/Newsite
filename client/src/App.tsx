@@ -6,7 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
-import SocialFloatingButtons from "./components/SocialFloatingButtons";
+// SocialFloatingButtons removido do bundle inicial para evitar Framer Motion na Home inicial
 import { lazy, Suspense } from "react";
 
 // Lazy load páginas que não são críticas para reduzir bundle inicial
@@ -53,7 +53,6 @@ function Router() {
           <Route component={NotFound} />
         </Switch>
       </Suspense>
-      <SocialFloatingButtons />
     </>
   );
 }

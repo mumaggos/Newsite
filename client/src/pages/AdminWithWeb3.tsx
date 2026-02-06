@@ -1,10 +1,10 @@
-import { Web3Provider } from "@/components/Web3Provider";
+import Web3Guard from "@/components/Web3Guard";
 import Admin from "./Admin";
 
 export default function AdminWithWeb3() {
   return (
-    <Web3Provider>
+    <Web3Guard>
       <Admin />
-    </Web3Provider>
+    </Web3Guard>
   );
 }

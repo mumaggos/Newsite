@@ -1,10 +1,10 @@
-import { Web3Provider } from "@/components/Web3Provider";
+import Web3Guard from "@/components/Web3Guard";
 import Dividends from "./Dividends";
 
 export default function DividendsWithWeb3() {
   return (
-    <Web3Provider>
+    <Web3Guard>
       <Dividends />
-    </Web3Provider>
+    </Web3Guard>
   );
 }

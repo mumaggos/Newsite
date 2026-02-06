@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Send, Mail } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
+import SocialFloatingButtons from "./SocialFloatingButtons";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -155,6 +156,7 @@ export default function LayoutNoWeb3({ children }: { children: React.ReactNode }
       <main className="flex-grow pt-24 pb-12 px-4 md:px-0">
         {children}
       </main>
+      <SocialFloatingButtons />
 
       {/* Footer */}
       <footer className="border-t border-border/30 bg-background/50 backdrop-blur-sm pt-16 pb-8">
