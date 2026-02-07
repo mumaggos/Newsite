@@ -5,7 +5,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import SocialFloatingButtons from "./SocialFloatingButtons";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+// Framer Motion removido para otimização de bundle inicial
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function LayoutNoWeb3({ children }: { children: React.ReactNode }) {
@@ -107,50 +107,44 @@ export default function LayoutNoWeb3({ children }: { children: React.ReactNode }
       </header>
 
       {/* Mobile Nav Overlay */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl pt-24 px-6 lg:hidden flex flex-col gap-6 h-screen overflow-y-auto"
-          >
-            {navItems.map((item) => (
-              <Link key={item.path} href={item.path}>
-                <a 
-                  className={cn(
-                    "text-2xl font-display font-bold transition-colors py-2 border-b border-border/30",
-                    location === item.path ? "text-primary" : "text-foreground/80"
-                  )}
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                >
-                  {t(item.labelKey)}
-                </a>
-              </Link>
-            ))}
-            
-            <div className="mt-4 border-t border-border/30 pt-4">
-              <LanguageSwitcher />
-            </div>
-            
-            <div className="mt-auto mb-8 flex justify-center gap-6">
-              <a href="https://x.com/ludbanlbd?s=21" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary">
-                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl pt-24 px-6 lg:hidden flex flex-col gap-6 h-screen overflow-y-auto animate-in slide-in-from-right duration-300"
+        >
+          {navItems.map((item) => (
+            <Link key={item.path} href={item.path}>
+              <a 
+                className={cn(
+                  "text-2xl font-display font-bold transition-colors py-2 border-b border-border/30",
+                  location === item.path ? "text-primary" : "text-foreground/80"
+                )}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                {t(item.labelKey)}
               </a>
-              <a href="https://t.me/LubdanOfficial" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary">
-                <Send size={24} />
-              </a>
-              <a href="mailto:lubdan.info@gmail.com" className="text-muted-foreground hover:text-primary">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </Link>
+          ))}
+          
+          <div className="mt-4 border-t border-border/30 pt-4">
+            <LanguageSwitcher />
+          </div>
+          
+          <div className="mt-auto mb-8 flex justify-center gap-6">
+            <a href="https://x.com/ludbanlbd?s=21" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary">
+              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://t.me/LubdanOfficial" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-primary">
+              <Send size={24} />
+            </a>
+            <a href="mailto:lubdan.info@gmail.com" className="text-muted-foreground hover:text-primary">
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+            </a>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="flex-grow pt-24 pb-12 px-4 md:px-0">

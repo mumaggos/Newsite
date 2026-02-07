@@ -1,18 +1,20 @@
 import LayoutNoWeb3 from "@/components/LayoutNoWeb3";
-import Mascot3D from "@/components/Mascot3D";
 import { Button } from "@/components/ui/button";
 import { usePresaleDataNoWeb3 } from "@/hooks/usePresaleDataNoWeb3";
-import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, TrendingUp, Coins, Zap } from "lucide-react";
 import { Link } from "wouter";
+import { lazy, Suspense } from "react";
 
-import Newsletter from "@/components/Newsletter";
 import ListedOn from "@/components/ListedOn";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+// Lazy load componentes pesados
+const Mascot3D = lazy(() => import("@/components/Mascot3D"));
+const Newsletter = lazy(() => import("@/components/Newsletter"));
+
 export default function Home() {
   const { t } = useLanguage();
-  const { currentPhase, totalSold } = usePresaleDataNoWeb3();
+  const { currentPhase } = usePresaleDataNoWeb3();
   
   return (
     <LayoutNoWeb3>
@@ -28,12 +30,12 @@ export default function Home() {
               {t('home.hero.presale_live').replace('{phase}', currentPhase.toString())}
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-display font-bold leading-tight text-foreground" style={{ opacity: 1, transform: 'none' }}>
+            <h1 className="text-5xl md:text-7xl font-display font-bold leading-tight text-foreground">
               {t('home.hero.title.where')} <span className="text-primary text-gold-glow">{t('home.hero.title.strategy')}</span> <br />
               {t('home.hero.title.meets')} <span className="text-secondary text-neon">{t('home.hero.title.luck')}</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground max-w-lg leading-relaxed" style={{ opacity: 1, transform: 'none' }}>
+            <p className="text-xl text-muted-foreground max-w-lg leading-relaxed">
               {t('home.hero.subtitle')}
             </p>
             
@@ -86,12 +88,8 @@ export default function Home() {
           </div>
 
           <div className="relative flex justify-center lg:justify-end z-10 mt-8 lg:mt-0">
-            {/* Floating element - Current Phase */}
-            <motion.div 
-              animate={{ y: [0, -15, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -top-4 -right-4 lg:top-10 lg:-right-10 bg-card/80 backdrop-blur-md border border-primary/30 p-4 rounded-xl shadow-xl z-30"
-            >
+            {/* Floating element - CSS Animation instead of Framer */}
+            <div className="absolute -top-4 -right-4 lg:top-10 lg:-right-10 bg-card/80 backdrop-blur-md border border-primary/30 p-4 rounded-xl shadow-xl z-30 animate-bounce-slow">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                   <TrendingUp size={20} />
@@ -103,9 +101,11 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
             
-            <Mascot3D />
+            <Suspense fallback={<div className="w-full h-[400px]" />}>
+              <Mascot3D />
+            </Suspense>
           </div>
         </div>
       </section>
@@ -165,7 +165,9 @@ export default function Home() {
       </section>
 
       {/* Newsletter Section */}
-      <Newsletter />
+      <Suspense fallback={<div className="h-40" />}>
+        <Newsletter />
+      </Suspense>
 
       {/* Listed On Section */}
       <ListedOn />
