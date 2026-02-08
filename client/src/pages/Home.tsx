@@ -157,6 +157,8 @@ export default function Home() {
                   height="400"
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
                 />
               </picture>
             </div>

@@ -28,7 +28,7 @@
     <link rel="manifest" href="/manifest.json">
     
     <!-- Preconnect to external resources -->
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <!-- GTM/Analytics removed to eliminate main-thread blocking -->
     
     <!-- Preload critical fonts -->
     <link rel="preload" href="/fonts/cinzel-decorative.woff2" as="font" type="font/woff2" crossorigin>
@@ -41,29 +41,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
-    <style>
-      :root { --background: 240 10% 3.9%; --foreground: 0 0% 98%; --primary: 45 63% 52%; }
-      body { background-color: #09090b; color: #fafafa; font-family: system-ui, -apple-system, sans-serif; margin: 0; }
-      .hero-title { font-size: 3rem; font-weight: 700; line-height: 1.2; }
-      @media (min-width: 768px) { .hero-title { font-size: 4.5rem; } }
-      .text-gold-glow { text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); color: #d4af37; }
-      .text-neon { text-shadow: 0 0 10px rgba(0, 255, 65, 0.5); color: #00ff41; }
-      .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
-    </style>
-
     <title>Lubdan Platform | Polygon Dividends</title>
     <meta name="apple-mobile-web-app-title" content="Lubdan">
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="email=no">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
   </head>
   <body>
     <div id="root"></div>

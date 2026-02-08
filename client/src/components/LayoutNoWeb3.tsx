@@ -43,6 +43,9 @@ export default function LayoutNoWeb3({ children }: { children: React.ReactNode }
             src="/images/IMG_2903.webp" 
             alt="" 
             className="absolute top-0 left-0 w-full h-full object-cover opacity-20 mix-blend-overlay"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
           />
         </picture>
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[100px]" />
